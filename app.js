@@ -10,7 +10,8 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 
 // Set up default mongoose connection
-const mongoDB = "mongodb://localhost:27017/test";
+const dev_db_url = "mongodb://localhost:27017/test?retryWrites=true";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
 
 // Get default connection
