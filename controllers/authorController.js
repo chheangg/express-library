@@ -98,7 +98,6 @@ exports.author_create_post = [
         return next(err);
       }
       
-      console.log(author.url);
       res.redirect(author.url);
     })
   }
@@ -112,7 +111,7 @@ exports.author_delete_get = (req, res, next) => {
         Author.findById(req.params.id)
           .exec(callback);
       },
-      author_books(callback) {
+      authors_books(callback) {
         Book.find({ author: req.params.id })
           .exec(callback);
       }
@@ -143,7 +142,7 @@ exports.author_delete_post = (req, res, next) => {
         Author.findById(req.body.authorid)
           .exec(callback);
       },
-      author_books(callback) {
+      authors_books(callback) {
         Book.find({ author: req.body.authorid })
           .exec(callback);
       }
@@ -162,6 +161,9 @@ exports.author_delete_post = (req, res, next) => {
       }
 
       Author.findByIdAndDelete(req.body.authorid, (err) => {
+        if (err) {
+          next(err);
+        }
         res.redirect('/catalog/authors')
       })
 
