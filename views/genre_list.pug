@@ -1,0 +1,7 @@
+extends layout 
+
+block content
+  ul 
+    each genre in genre_list
+      li 
+        a(href= genre.url) #{genre.name}
