@@ -19,6 +19,6 @@ You can [check out the live site through here!](https://express-library-producti
 ## Middleware used
 - Express-validator
 - Helmet
-- Compressor
+- Compression
 - Async
 - moongoose
